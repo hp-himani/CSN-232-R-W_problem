@@ -59,7 +59,7 @@ signal(Sem_W);
 #### Explaination: 
 - The writer process first waits for the Sem_W semaphore, which ensures that writers are given priority over readers. 
 - Then it waits for the Sem_R semaphore, which ensures that only one reader is accessing the resource at a time. 
-- If there are readers currently accessing the resource, it sets the writer_wait flag to true and signals the Sem_R semaphore to let readers finish then waits on the wrt semaphore, which indicates that a writer is waiting otherwise, it just signals the Sem_R semaphore to let readers finish. Then it enters the critical section. 
+- If there are readers currently accessing the resource, it sets the writer_wait flag to true and signals the Sem_R semaphore to let readers finish then waits on the wrt semaphore, which indicates that a writer is waiting otherwise, it just signals the Sem_R semaphore to allow other processes to access the resource. Then it enters the critical section. 
 - Finally, it signals the Sem_W semaphore to allow other processes to access the resource. 
 - The semaphore wrt is initialized to 0 as in both the processes, one executes only wait() 
 and other executes only signal().
